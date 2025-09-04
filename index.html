@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>安全工具知识库 | SafePro Resources</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="安全工具和资源知识库 - 汇总各类网络安全工具、渗透测试资源、漏洞分析等内容">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    :root {
+      --theme-color: #42b983;
+    }
+    .sidebar {
+      padding: 1rem 0;
+    }
+    .sidebar-nav {
+      line-height: 1.8em;
+    }
+    .sidebar ul li.active > a {
+      color: var(--theme-color);
+      font-weight: 600;
+    }
+    .markdown-section {
+      max-width: 900px;
+    }
+    .markdown-section code {
+      color: #e96900;
+    }
+    .markdown-section h1 {
+      margin-bottom: 1rem;
+    }
+    .markdown-section h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .markdown-section a {
+      font-weight: 500;
+    }
+    .app-name-link img {
+      max-width: 80%;
+    }
+    .cover-main img {
+      max-width: 60%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: '安全工具知识库',
+      repo: '',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      coverpage: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索',
+        noData: '未找到结果',
+        depth: 6,
+        hideOtherSidebarContent: false,
+        namespace: 'safePro-resources'
+      },
+      pagination: {
+        previousText: '上一章',
+        nextText: '下一章',
+      },
+      copyCode: {
+        buttonText : '复制',
+        errorText  : '错误',
+        successText: '已复制'
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function(html) {
+            return html + '
+----
+最后更新: ' + new Date().toLocaleDateString('zh-CN');
+          });
+        }
+      ]
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-php.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-go.min.js"></script>
+</body>
+</html>
