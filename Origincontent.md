@@ -3,7 +3,7 @@
 目录导航
 
     相关资源列表
-    攻防测试手册
+    渗透测试手册
     内网安全文档
     学习手册相关资源
     Checklist 和基础安全知识
@@ -104,7 +104,7 @@
     https://www.jianshu.com/p/852e0fbe2f4c 安全产品厂商分类
     https://www.freebuf.com/articles/web/195304.html 一句话木马的套路
 
-攻防测试手册
+渗透测试手册
 
     https://micropoor.blogspot.com/2019/01/php8.html PHP 安全新闻早 8 点课程系列高持续渗透–Microporor
     https://github.com/Micropoor/Micro8 Microporor 高级攻防 100 课

@@ -1,16 +1,16 @@
 
 
-# 安全工具知识库
+# [红队资源知识库](/)
 
 <div align="center">
 
-## 🏠 首页 | [GitHub](https://github.com/adminlove520/RedTeamWiki) | [在线访问](https://adminlove520.github.io/RedTeamWiki/)
+## [🏠 首页](./README.md) | [GitHub](https://github.com/adminlove520/RedTeamWiki) | [在线访问](https://adminlove520.github.io/RedTeamWiki/)
 
 </div>
 
 ## 📚 关于知识库
 
-安全工具知识库是一个收集和整理各类网络安全工具、学习资源和实战指南的综合性平台。我们的目标是为安全研究人员、渗透测试工程师和网络安全爱好者提供一站式的资源获取渠道，帮助大家提升技能，加强网络安全防护能力。
+红队资源知识库是一个收集和整理各类网络安全工具、学习资源和实战指南的综合性平台。我们的目标是为安全研究人员、渗透测试工程师和网络安全爱好者提供一站式的资源获取渠道，帮助大家提升技能，加强网络安全防护能力。
 
 ### 🔍 我们的特点
 
@@ -22,10 +22,10 @@
 ## 📂 内容分类
 
 ### 基础资源
-- [相关资源列表](docs/相关资源列表.md) - 网络安全学习资料集合
-- [攻防测试手册](docs/攻防测试手册.md) - 各类攻防测试指南和方法
-- [安全防护](docs/安全防护.md) - 安全防护工具与技术
-- [运维安全服务与资产管理](docs/运维安全服务与资产管理.md) - 运维安全和资产管理工具
+- [相关资源列表](docs/相关资源列表.md)
+- [渗透测试手册](docs/渗透测试手册.md)
+- [安全防护](docs/安全防护.md)
+- [运维安全服务与资产管理](docs/运维安全服务与资产管理.md)
 
 ### Web安全
 - [Web安全相关](docs/Web安全相关.md) - Web安全测试框架和工具
@@ -94,18 +94,37 @@
 
 ### 本地访问
 
+#### 方法一：使用docsify（推荐）
+1. 确保已安装Node.js环境
+2. 全局安装docsify-cli工具
+```bash
+npm i docsify-cli -g
+```
+3. 克隆仓库到本地
+```bash
+git clone https://github.com/adminlove520/RedTeamWiki.git
+```
+4. 进入仓库目录
+```bash
+cd RedTeamWiki
+```
+5. 启动本地服务器
+```bash
+docsify serve .
+```
+6. 打开浏览器访问 http://localhost:3000
+
+#### 方法二：直接访问
 1. 克隆仓库到本地
 ```bash
- git clone https://github.com/adminlove520/RedTeamWiki.git
+git clone https://github.com/adminlove520/RedTeamWiki.git
 ```
-
 2. 打开文件夹，使用浏览器直接访问 `index.html`
 
 ### 在线访问
 
-**注意：当前GitHub Pages站点可能显示404错误**
 
-GitHub Pages站点（https://adminlove520.github.io/RedTeamWiki/）
+- [RedTeamWiki](https://adminlove520.github.io/RedTeamWiki/)
 
 ## 📱 使用技巧
 

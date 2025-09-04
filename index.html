@@ -2,17 +2,17 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>安全工具知识库</title>
+  <title>红队资源知识库</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="全面的网络安全工具、资源和学习资料知识库">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <!-- 代码高亮主题 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css">
-  <!-- 分页样式 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.css">
+
   <!-- 动画效果 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+
   <style>
     /* 主题颜色变量 */
     :root {
@@ -58,6 +58,57 @@
     .sidebar-nav {
       line-height: 1.8;
       padding: 0 1rem;
+    }
+    
+    /* 优化侧边栏列表样式 */
+    .sidebar ul {
+      list-style-type: none;
+    }
+    
+    .sidebar ul li {
+      list-style-type: none;
+    }
+    
+    .sidebar ul ul {
+      padding-left: 0.5rem;
+    }
+    
+    /* 隐藏文档路径导航中的分隔符 */
+    .app-name-link::before {
+      display: none !important;
+    }
+    
+    /* 隐藏面包屑导航中的分隔符 */
+    .breadcrumb-item::before {
+      content: '' !important;
+    }
+    
+    /* 隐藏目录树中的连接线 */
+    .sidebar-nav > ul > li > ul li::before {
+      display: none !important;
+    }
+    
+    /* 保留侧边栏折叠功能 */
+    .sidebar-nav li {
+      position: relative;
+    }
+    
+    /* 确保侧边栏可折叠 */
+    .sidebar-nav > ul > li {
+      position: relative;
+    }
+    
+    /* 恢复侧边栏折叠/展开的箭头图标 */
+    .sidebar-nav > ul > li.active > a:not(:only-child):before {
+      transform: rotate(90deg);
+    }
+    
+    .sidebar-nav > ul > li > a:not(:only-child):before {
+      content: '▶';
+      display: inline-block;
+      margin-right: 5px;
+      font-size: 8px;
+      transition: transform 0.2s ease;
     }
     
     .sidebar-nav > ul > li > a {
@@ -130,45 +181,6 @@
       overflow-x: auto;
     }
     
-    /* 标题样式 */
-    .markdown-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      color: var(--theme-color);
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-    
-    .markdown-section h1::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background-color: var(--theme-secondary);
-      border-radius: 2px;
-    }
-    
-    .markdown-section h2 {
-      font-size: 2rem;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      color: var(--theme-color);
-      border-bottom: 2px solid var(--sidebar-border);
-      padding-bottom: 0.5rem;
-    }
-    
-    .markdown-section h3 {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-      color: var(--theme-color);
-    }
-    
     /* 引用样式 */
     .markdown-section blockquote {
       border-left: 4px solid var(--theme-secondary);
@@ -179,8 +191,8 @@
       border-radius: 0 var(--radius) var(--radius) 0;
     }
     
-    /* 链接样式 */
-    .markdown-section a {
+    /* 链接样式 - 基础链接样式，不包含标题内链接 */
+    .markdown-section a:not(h1 a):not(h2 a):not(h3 a) {
       font-weight: 500;
       color: var(--theme-secondary);
       text-decoration: none;
@@ -188,11 +200,11 @@
       position: relative;
     }
     
-    .markdown-section a:hover {
+    .markdown-section a:not(h1 a):not(h2 a):not(h3 a):hover {
       color: var(--theme-accent);
     }
     
-    .markdown-section a::after {
+    .markdown-section a:not(h1 a):not(h2 a):not(h3 a)::after {
       content: '';
       position: absolute;
       bottom: -2px;
@@ -203,9 +215,91 @@
       transition: width 0.2s ease;
     }
     
-    .markdown-section a:hover::after {
+    .markdown-section a:not(h1 a):not(h2 a):not(h3 a):hover::after {
       width: 100%;
       background-color: var(--theme-accent);
+    }
+    
+    /* 标题样式 - 统一的标题样式和悬停效果 */
+    .markdown-section h1, 
+    .markdown-section h2, 
+    .markdown-section h3 {
+      font-weight: 600;
+      color: var(--theme-color);
+      position: relative;
+      padding-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .markdown-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .markdown-section h2 {
+      font-size: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .markdown-section h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    /* 标题悬停效果 - 统一实现，避免冲突 */
+    .markdown-section h1::after, 
+    .markdown-section h2::after, 
+    .markdown-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--theme-secondary);
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+    
+    /* 标题悬停时的效果 */
+    .markdown-section h1:hover, 
+    .markdown-section h2:hover, 
+    .markdown-section h3:hover {
+      color: var(--theme-accent);
+    }
+    
+    .markdown-section h1:hover::after, 
+    .markdown-section h2:hover::after, 
+    .markdown-section h3:hover::after {
+      width: 100%;
+      background-color: var(--theme-accent);
+    }
+    
+    /* 标题内链接特殊处理 - 完全禁用链接的默认悬停效果 */
+    .markdown-section h1 a,
+    .markdown-section h2 a,
+    .markdown-section h3 a {
+      color: inherit;
+      text-decoration: none;
+      position: static; /* 移除相对定位，避免创建新的定位上下文 */
+    }
+    
+    /* 完全禁用标题内链接的伪元素 */
+    .markdown-section h1 a::after,
+    .markdown-section h2 a::after,
+    .markdown-section h3 a::after {
+      display: none !important;
+      content: none !important;
+    }
+    
+    /* 标题内链接悬停时继承标题的悬停效果 */
+    .markdown-section h1 a:hover,
+    .markdown-section h2 a:hover,
+    .markdown-section h3 a:hover {
+      color: inherit; /* 继承标题的悬停颜色 */
+      text-decoration: none;
     }
     
     /* 图片样式 */
@@ -268,11 +362,29 @@
       }
     }
     
-    /* 进度条样式 */
-    :root {
-      --progress-height: 4px;
-      --progress-color: var(--theme-secondary);
-      --progress-background: var(--sidebar-border);
+    /* 顶部进度条样式 - 参考博客园效果 */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      background-size: 200% 100%;
+      z-index: 9999;
+      transition: width 0.1s ease;
+      animation: gradientMove 2s linear infinite;
+    }
+    
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
     
     .markdown-section table th {
@@ -407,34 +519,245 @@
       }
     }
     
-    /* 动画效果 */
-    .sidebar-nav li {
-      animation: fadeIn 0.5s ease-out;
-      transition: all 0.3s ease;
-      opacity: 0;
+    /* 全局中文字体设置 - 所有中文默认使用楷书 */
+    :root {
+      --font-chinese: "KaiTi", "楷体", "STKaiti", "华文楷体", serif;
+      --font-running: "STXingkai", "华文行书", "SimSun-ExtB", serif;
     }
     
-    .sidebar-nav li.fade-in {
-      opacity: 1;
+    /* 为所有中文字体设置默认样式 */
+    body,
+    p,
+    li,
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    blockquote {
+      font-family: var(--font-chinese), system-ui, -apple-system, sans-serif !important;
     }
     
+    /* 封面页样式 */
+    .section.cover {
+      position: relative;
+    }
+    
+    .cover-main {
+      position: relative;
+    }
+    
+    /* 封面页列表样式 */
+    .cover-main ul {
+      list-style-type: none !important;
+      padding-left: 0 !important;
+    }
+    
+    .cover-main ul li {
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* 为'红队资源知识库'设置行书字体 - 匹配README中的标题样式 */
+    .markdown-section h1 a[href="/"],
+    .markdown-section h1 a[href="/"]:hover {
+      font-family: var(--font-running) !important;
+      font-size: 2.5rem !important;
+      color: inherit !important;
+      text-decoration: none !important;
+    }
+    
+    /* 确保所有其他中文字体都是楷书 */
+    .markdown-section,
+    .sidebar,
+    .app-name-link img {
+      font-family: var(--font-chinese), system-ui, -apple-system, sans-serif !important;
+    }
+    
+    /* 封面页响应式优化 */
+    @media (max-width: 768px) {
+      .cover-main ul li {
+        font-size: 1rem;
+      }
+      
+      .markdown-section h1 a[href="/"] {
+        font-size: 2rem !important;
+      }
+    }
+    
+    /* 侧边栏导航优化 */
+    .sidebar-nav {
+      overflow-y: auto;
+      max-height: calc(100vh - 120px);
+      scrollbar-width: thin;
+      scrollbar-color: var(--sidebar-border) var(--sidebar-bg);
+    }
+    
+    .sidebar-nav::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .sidebar-nav::-webkit-scrollbar-track {
+      background: var(--sidebar-bg);
+    }
+    
+    .sidebar-nav::-webkit-scrollbar-thumb {
+      background-color: var(--sidebar-border);
+      border-radius: 3px;
+    }
+    
+    /* 侧边栏分类标题样式 */
+    .sidebar-nav > ul > li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .sidebar-nav > ul > li > a {
+      font-weight: 600;
+      font-size: 14px;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 0.3rem;
+      border-radius: var(--radius);
+    }
+    
+    /* 子菜单样式 */
+    .sidebar-nav ul ul {
+      padding-left: 1rem;
+      margin: 0.2rem 0;
+    }
+    
+    .sidebar-nav ul ul li a {
+      font-size: 13px;
+      padding: 0.3rem 0.6rem;
+      color: var(--text-secondary);
+    }
+    
+    /* 活动状态增强 */
+    .sidebar ul li.active > a {
+      padding-left: 0.8rem;
+    }
+    
+    /* 悬停效果优化 */
     .sidebar-nav li:hover {
-      transform: translateX(5px);
       background-color: var(--hover-bg);
+      border-radius: var(--radius);
     }
     
-    .markdown-section {
-      animation: slideIn 0.5s ease-out;
+    /* 搜索框焦点效果 */
+    .search {
+      transition: all 0.3s ease;
     }
     
-    /* 页面加载动画 */
-    body {
-      opacity: 0;
-      transition: opacity 0.5s ease;
+    .search.focused {
+      box-shadow: 0 0 0 2px var(--theme-color);
     }
     
-    body.loaded {
-      opacity: 1;
+    /* 回到顶部按钮样式 */
+    .sidebar-nav .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--theme-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      display: none;
+    }
+    
+    .sidebar-nav .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+
+      
+      /* 侧边栏导航优化 */
+    .sidebar-nav {
+      overflow-y: auto;
+      max-height: calc(100vh - 120px);
+      scrollbar-width: thin;
+      scrollbar-color: var(--sidebar-border) var(--sidebar-bg);
+    }
+    
+    .sidebar-nav::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .sidebar-nav::-webkit-scrollbar-track {
+      background: var(--sidebar-bg);
+    }
+    
+    .sidebar-nav::-webkit-scrollbar-thumb {
+      background-color: var(--sidebar-border);
+      border-radius: 3px;
+    }
+    
+    /* 侧边栏分类标题样式 */
+    .sidebar-nav > ul > li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .sidebar-nav > ul > li > a {
+      font-weight: 600;
+      font-size: 14px;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 0.3rem;
+      border-radius: var(--radius);
+    }
+    
+    /* 子菜单样式 */
+    .sidebar-nav ul ul {
+      padding-left: 1rem;
+      margin: 0.2rem 0;
+    }
+    
+    .sidebar-nav ul ul li a {
+      font-size: 13px;
+      padding: 0.3rem 0.6rem;
+      color: var(--text-secondary);
+    }
+    
+    /* 活动状态增强 */
+    .sidebar ul li.active > a {
+      padding-left: 0.8rem;
+    }
+    
+    /* 悬停效果优化 */
+    .sidebar-nav li:hover {
+      background-color: var(--hover-bg);
+      border-radius: var(--radius);
     }
     
     /* 搜索框焦点效果 */
@@ -497,7 +820,7 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '安全工具知识库',
+      name: '红队资源知识库',
       repo: 'adminlove520/RedTeamWiki',
       loadSidebar: true,
       subMaxLevel: 3,
@@ -536,7 +859,7 @@
           var footer = [
             '<hr/>',
             '<footer>',
-            '<span>安全工具知识库 &copy; 2025</span>',
+            '<span>红队资源知识库 &copy; 2025</span>',
             '</footer>'
           ].join('');
 
@@ -549,8 +872,7 @@
       auto2top: true,
       // 主题颜色
       themeColor: '#42b983',
-      // 启动平滑滚动
-      smoothScroll: true,
+
       // 支持图片缩放
       zoomImage: {
         // 启用图片缩放功能
@@ -566,80 +888,351 @@
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <!-- 搜索插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <!-- 代码复制插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <!-- 分页插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <!-- 代码高亮支持 -->
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-yaml.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-sql.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-xml.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-c.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
-  <!-- 图片缩放插件 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify-zoom-image/dist/docsify-zoom-image.min.js"></script>
-    <!-- 回到顶部插件 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-    <!-- 平滑滚动插件 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/smooth-scroll.min.js"></script>
-    <!-- 页面进度插件 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify-progress/dist/docsify-progress.min.js"></script>
-    <!-- 代码行号插件 -->
-    <script src="//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css">
-    <!-- 代码高亮关键词插件 -->
-    <script src="//cdn.jsdelivr.net/npm/prismjs/plugins/highlight-keywords/prism-highlight-keywords.min.js"></script>
-    <!-- 字数统计插件 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify-count/dist/countable.min.js"></script>
-    <!-- 代码复制插件 -->
+    <!-- 核心插件 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-    <!-- 自定义增强脚本 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    
+    <!-- 代码高亮支持 -->
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-yaml.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-sql.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+    
+    <!-- 顶部进度条功能实现 -->
     <script>
-      // 页面加载完成后的动画效果
-      window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        // 为导航项添加动画
-        const navItems = document.querySelectorAll('.sidebar-nav li');
-        navItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.add('fade-in');
-          }, index * 50);
-        });
-      });
-      
-      // 监听滚动事件，显示/隐藏回到顶部按钮
-      window.addEventListener('scroll', function() {
-        const scrollTopButton = document.querySelector('.sidebar-nav .back-to-top');
-        if (scrollTopButton) {
-          if (window.pageYOffset > 300) {
-            scrollTopButton.style.display = 'block';
-          } else {
-            scrollTopButton.style.display = 'none';
+      (function() {
+        // 创建进度条元素
+        var progressBar = document.createElement('div');
+        progressBar.className = 'reading-progress';
+        progressBar.style.width = '0%';
+        document.body.appendChild(progressBar);
+        
+        // 监听滚动事件更新进度条
+        function updateProgress() {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var scrollPercent = (scrollTop / docHeight) * 100;
+          progressBar.style.width = scrollPercent + '%';
+        }
+        
+        // 初始化和监听事件
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('resize', updateProgress);
+        // 初始调用一次
+        updateProgress();
+      })();
+    </script>
+    <!-- 炫酷背景效果 -->
+    <div id="bg-particles" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+    <script>
+      // 背景粒子效果实现
+      (function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('bg-particles');
+        
+        // 设置canvas尺寸
+        function setCanvasSize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        
+        setCanvasSize();
+        container.appendChild(canvas);
+        
+        // 创建粒子数组
+        const particlesArray = [];
+        const numberOfParticles = Math.floor(window.innerWidth / 5);
+        
+        // 创建单个粒子
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+            this.color = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.5)`;
+          }
+          
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            
+            if (this.size > 0.2) this.size -= 0.005;
+            
+            // 边界检查
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+          }
+          
+          draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
           }
         }
-      });
-      
-      // 搜索增强
-      window.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.querySelector('.search input');
-        if (searchInput) {
-          searchInput.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-          });
-          searchInput.addEventListener('blur', function() {
-            this.parentElement.classList.remove('focused');
+        
+        // 初始化粒子
+        function init() {
+          particlesArray.length = 0;
+          const count = Math.floor(window.innerWidth / 8);
+          for (let i = 0; i < count; i++) {
+            particlesArray.push(new Particle());
+          }
+        }
+        
+        // 连接粒子
+        function connectParticles() {
+          const opacityValue = 0.1;
+          for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+              const dx = particlesArray[a].x - particlesArray[b].x;
+              const dy = particlesArray[a].y - particlesArray[b].y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+              
+              if (distance < 100) {
+                ctx.strokeStyle = `rgba(100, 100, 255, ${opacityValue - (distance/1000)})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+        
+        // 动画循环
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+          }
+          connectParticles();
+          requestAnimationFrame(animate);
+        }
+        
+        // 初始化和事件监听
+        init();
+        animate();
+        
+        window.addEventListener('resize', function() {
+          setCanvasSize();
+          init();
+        });
+      })();
+    </script>
+    
+    <!-- 侧边栏导航增强脚本 - 参考Vue.js交互设计 -->
+    <script>
+      // 模块化设计 - 侧边栏交互增强
+      (function() {
+        // DOM元素缓存
+        const elements = {
+          searchInput: null,
+          navItems: null
+        };
+        
+        // 初始化DOM元素
+        function initElements() {
+          elements.searchInput = document.querySelector('.search input');
+          elements.navItems = document.querySelectorAll('.sidebar-nav a');
+        }
+        
+        // 搜索框交互增强
+        function enhanceSearchInput() {
+          if (elements.searchInput) {
+            // 焦点状态处理
+            elements.searchInput.addEventListener('focus', function() {
+              this.parentElement.classList.add('focused');
+              // 添加淡入动画效果
+              this.style.transition = 'all 0.3s ease';
+              this.style.width = '100%';
+            });
+            
+            elements.searchInput.addEventListener('blur', function() {
+              this.parentElement.classList.remove('focused');
+              this.style.width = '100%';
+            });
+            
+            // 输入防抖处理
+            let searchTimeout;
+            elements.searchInput.addEventListener('input', function() {
+              clearTimeout(searchTimeout);
+              searchTimeout = setTimeout(() => {
+                // 可以在这里添加实时搜索预览功能
+              }, 300);
+            });
+          }
+        }
+        
+        // 高亮当前活动的侧边栏项目
+        function highlightActiveItem() {
+          const currentPath = window.location.hash || '#';
+          
+          elements.navItems.forEach(item => {
+            const isActive = item.getAttribute('href') === currentPath;
+            const parentLi = item.parentElement;
+            
+            // 移除所有活动状态
+            parentLi.classList.remove('active');
+            
+            // 添加当前活动状态
+            if (isActive) {
+              parentLi.classList.add('active');
+              // 平滑滚动到当前活动项
+              item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              
+              // 添加高亮动画效果
+              parentLi.style.transition = 'all 0.3s ease';
+              
+              // 高亮父级分类
+              let parentNode = parentLi.parentElement.parentElement;
+              while (parentNode && parentNode.tagName === 'LI') {
+                parentNode.classList.add('parent-active');
+                parentNode = parentNode.parentElement.parentElement;
+              }
+            }
           });
         }
-      });
+        
+        // 滚动监听与回到顶部功能
+        function setupScrollHandler() {
+          let backToTopBtn = document.createElement('button');
+          backToTopBtn.className = 'back-to-top';
+          backToTopBtn.innerHTML = '↑';
+          backToTopBtn.style.display = 'none';
+          document.body.appendChild(backToTopBtn);
+          
+          // 监听滚动事件
+          window.addEventListener('scroll', function() {
+            // 显示/隐藏回到顶部按钮
+            if (window.scrollY > 300) {
+              backToTopBtn.style.display = 'block';
+              // 添加淡入动画
+              backToTopBtn.style.opacity = '1';
+              backToTopBtn.style.transform = 'translateY(0)';
+            } else {
+              backToTopBtn.style.opacity = '0';
+              backToTopBtn.style.transform = 'translateY(20px)';
+              // 延迟隐藏，等待动画完成
+              setTimeout(() => {
+                if (window.scrollY <= 300) {
+                  backToTopBtn.style.display = 'none';
+                }
+              }, 300);
+            }
+          });
+          
+          // 回到顶部按钮点击事件
+          backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          });
+          
+          // 回到顶部按钮样式设置
+          const style = document.createElement('style');
+          style.textContent = `
+            .back-to-top {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background-color: var(--theme-secondary);
+              color: white;
+              border: none;
+              border-radius: 50%;
+              width: 45px;
+              height: 45px;
+              font-size: 20px;
+              text-align: center;
+              line-height: 45px;
+              cursor: pointer;
+              box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+              transition: all 0.3s ease;
+              z-index: 9999;
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            
+            .back-to-top:hover {
+              background-color: var(--theme-accent);
+              transform: translateY(-3px) scale(1.05);
+              box-shadow: 0 6px 16px rgba(244, 63, 94, 0.4);
+            }
+            
+            .sidebar-nav .parent-active > a {
+              color: var(--theme-secondary);
+              font-weight: 600;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+        
+        // 页面内容动画效果
+        function setupContentAnimation() {
+          // 添加内容区域淡入动画
+          const contentObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                contentObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1 });
+          
+          // 初始化内容元素动画状态
+          function initContentAnimation() {
+            const markdownElements = document.querySelectorAll('.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section p, .markdown-section ul, .markdown-section ol, .markdown-section blockquote, .markdown-section pre');
+            
+            markdownElements.forEach((el, index) => {
+              el.style.opacity = '0';
+              el.style.transform = 'translateY(20px)';
+              el.style.transition = `all 0.6s ease ${index * 0.05}s`;
+              contentObserver.observe(el);
+            });
+          }
+          
+          // 监听内容变化，重新应用动画
+          window.addEventListener('hashchange', function() {
+            setTimeout(initContentAnimation, 100);
+          });
+          
+          // 初始化
+          setTimeout(initContentAnimation, 300);
+        }
+        
+        // 主初始化函数
+        function init() {
+          window.addEventListener('DOMContentLoaded', function() {
+            initElements();
+            enhanceSearchInput();
+            highlightActiveItem();
+            setupScrollHandler();
+            setupContentAnimation();
+            
+            // 监听路由变化
+            window.addEventListener('hashchange', highlightActiveItem);
+          });
+        }
+        
+        // 启动初始化
+        init();
+      })();
     </script>
+    
+    <!-- 樱花飘落效果脚本 -->
+    <script src="asets/js/cherry-blossom.js"></script>
 </body>
 </html>
