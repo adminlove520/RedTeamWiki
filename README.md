@@ -3,8 +3,6 @@
 # 安全工具知识库
 
 <div align="center">
-  
-![安全工具知识库](logo.jpg)
 
 ## 🏠 首页 | [GitHub](https://github.com/adminlove520/RedTeamWiki) | [在线访问](https://adminlove520.github.io/RedTeamWiki/)
 
@@ -34,9 +32,7 @@
 - [漏洞复现](docs/漏洞复现.md) - 漏洞复现环境和方法
 - [开源漏洞库](docs/开源漏洞库.md) - 开源漏洞数据库和资源
 - [本地文件包含漏洞](docs/本地文件包含漏洞.md) - LFI漏洞相关资源
-- [漏洞收集与Exp/Poc利用](docs/漏洞收集与Exp_Poc利用.md) - 漏洞利用代码和POC
-- [Java反序列化漏洞收集](docs/Java反序列化漏洞收集.md) - Java反序列化漏洞
-- [版本管理平台漏洞收集](docs/版本管理平台漏洞收集.md) - 版本控制平台漏洞
+- [漏洞收集与Exp-Poc利用](docs/漏洞收集与Exp-Poc利用.md) - 漏洞利用代码和POC
 
 ### 渗透测试工具
 - [工具包集合](docs/工具包集合.md) - 红队、蓝队和综合安全工具包合集
@@ -109,13 +105,7 @@
 
 **注意：当前GitHub Pages站点可能显示404错误**
 
-GitHub Pages站点（https://adminlove520.github.io/RedTeamWiki/）目前显示404错误，可能的原因包括：
-- GitHub Pages尚未正确配置或启用
-- 仓库中的GitHub Pages工作流尚未成功运行
-- 首次部署可能需要一些时间
-- 配置文件可能存在问题
-
-请使用本地方式访问知识库，或者等待GitHub Pages配置完成后再尝试在线访问。
+GitHub Pages站点（https://adminlove520.github.io/RedTeamWiki/）
 
 ## 📱 使用技巧
 

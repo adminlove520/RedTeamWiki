@@ -11,94 +11,484 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css">
   <!-- 分页样式 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.css">
+  <!-- 动画效果 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
   <style>
+    /* 主题颜色变量 */
     :root {
-      --theme-color: #42b983;
+      --theme-color: #374151;
+      --theme-secondary: #6366f1;
+      --theme-accent: #f43f5e;
+      --sidebar-bg: #f9fafb;
+      --sidebar-border: #e5e7eb;
+      --content-bg: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --text-tertiary: #9ca3af;
+      --code-bg: #1e293b;
+      --code-text: #e2e8f0;
+      --hover-bg: #f3f4f6;
       --sidebar-nav-link-before-content: '';
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --radius: 8px;
     }
+
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* 侧边栏样式 */
     .sidebar {
       padding: 1.5rem 0;
+      background-color: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-border);
+      transition: all 0.3s ease;
     }
+    
     .sidebar-nav {
-      line-height: 2;
+      line-height: 1.8;
+      padding: 0 1rem;
     }
+    
     .sidebar-nav > ul > li > a {
       font-weight: 600;
       font-size: 16px;
+      color: var(--text-primary);
+      display: block;
+      padding: 0.375rem 0.5rem;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
     }
+    
+    .sidebar-nav > ul > li > a:hover {
+      background-color: var(--hover-bg);
+      transform: translateX(3px);
+    }
+    
     .sidebar ul li.active > a {
-      color: var(--theme-color);
+      color: var(--theme-secondary);
       font-weight: 600;
+      background-color: rgba(99, 102, 241, 0.1);
+      position: relative;
     }
+    
+    .sidebar ul li.active > a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: var(--theme-secondary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    
+    /* 内容区域样式 */
     .markdown-section {
       max-width: 900px;
-      padding: 2rem 45px;
+      padding: 2.5rem 45px;
+      margin: 0 auto;
+      background-color: var(--content-bg);
     }
+    
+    /* 代码样式 */
     .markdown-section code {
-      color: #e96900;
+      color: var(--theme-accent);
+      background-color: rgba(244, 63, 94, 0.1);
+      padding: 0.15em 0.3em;
+      border-radius: 4px;
+      font-size: 0.875em;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     }
+    
+    .markdown-section pre {
+      background-color: var(--code-bg) !important;
+      border-radius: var(--radius);
+      padding: 0;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    
     .markdown-section pre > code {
-      color: #eee;
+      color: var(--code-text);
+      background-color: transparent;
       font-size: 14px;
       padding: 1.5em;
-      border-radius: 5px;
+      border-radius: var(--radius);
+      display: block;
+      overflow-x: auto;
     }
+    
+    /* 标题样式 */
     .markdown-section h1 {
       font-size: 2.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       font-weight: 700;
+      color: var(--theme-color);
+      position: relative;
+      padding-bottom: 0.5rem;
     }
+    
+    .markdown-section h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--theme-secondary);
+      border-radius: 2px;
+    }
+    
     .markdown-section h2 {
       font-size: 2rem;
-      margin-top: 2.5rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
       font-weight: 600;
-      border-bottom: 1px solid #eaecef;
-      padding-bottom: 0.3rem;
+      color: var(--theme-color);
+      border-bottom: 2px solid var(--sidebar-border);
+      padding-bottom: 0.5rem;
     }
+    
     .markdown-section h3 {
       font-size: 1.5rem;
       margin-top: 2rem;
+      margin-bottom: 0.75rem;
       font-weight: 600;
+      color: var(--theme-color);
     }
+    
+    /* 引用样式 */
     .markdown-section blockquote {
-      border-left: 4px solid var(--theme-color);
-      color: #6a737d;
+      border-left: 4px solid var(--theme-secondary);
+      color: var(--text-secondary);
+      background-color: rgba(99, 102, 241, 0.05);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
     }
+    
+    /* 链接样式 */
     .markdown-section a {
       font-weight: 500;
+      color: var(--theme-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      position: relative;
     }
+    
+    .markdown-section a:hover {
+      color: var(--theme-accent);
+    }
+    
+    .markdown-section a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--theme-secondary);
+      transition: width 0.2s ease;
+    }
+    
+    .markdown-section a:hover::after {
+      width: 100%;
+      background-color: var(--theme-accent);
+    }
+    
+    /* 图片样式 */
     .markdown-section img {
-      border-radius: 5px;
+      border-radius: var(--radius);
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-md);
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+    
+    .markdown-section img:hover {
+      transform: scale(1.02);
+    }
+    
+    /* 列表样式 */
+    .markdown-section ul, .markdown-section ol {
+      padding-left: 1.5rem;
       margin: 1rem 0;
     }
-    /* 回到顶部按钮样式 */
+    
+    .markdown-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .markdown-section ul li::marker {
+      color: var(--theme-secondary);
+    }
+    
+    /* 表格样式 */
+    .markdown-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-md);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    /* 滚动时导航栏固定 */
+    .sidebar-nav {
+      position: sticky;
+      top: 0;
+    }
+    
+    /* 响应式优化 */
+    @media (max-width: 768px) {
+      .markdown-section {
+        padding: 1.5rem 20px;
+      }
+      
+      .app-name-link img {
+        max-width: 60%;
+      }
+      
+      .sidebar-nav li:hover {
+        transform: translateX(3px);
+      }
+    }
+    
+    /* 进度条样式 */
+    :root {
+      --progress-height: 4px;
+      --progress-color: var(--theme-secondary);
+      --progress-background: var(--sidebar-border);
+    }
+    
+    .markdown-section table th {
+      background-color: var(--sidebar-bg);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--theme-color);
+      border-bottom: 2px solid var(--sidebar-border);
+    }
+    
+    .markdown-section table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--sidebar-border);
+    }
+    
+    .markdown-section table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .markdown-section table tr:hover {
+      background-color: var(--hover-bg);
+    }
+    
+    /* Logo和应用名称样式 */
+    .app-name {
+      padding: 0 1rem 1rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--sidebar-border);
+    }
+    
     .app-name-link img {
-      max-width: 80%;
+      max-width: 70%;
       content: url('logo.jpg');
+      margin: 0 auto 1rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
     }
+    
+    .app-name-link img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* 搜索框样式 */
     .search {
-      padding: 6px 0;
-      margin-bottom: 15px;
+      padding: 0 1rem 1rem;
+      margin-bottom: 1rem;
     }
+    
     .search input {
       font-size: 14px;
-      border-radius: 4px;
-      border: 1px solid #ddd;
-      padding: 8px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--sidebar-border);
+      padding: 0.75rem 1rem;
+      width: 100%;
+      transition: all 0.2s ease;
+      background-color: white;
     }
+    
+    .search input:focus {
+      outline: none;
+      border-color: var(--theme-secondary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    
+    /* 代码复制按钮样式优化 */
+    .copy-code-button {
+      border-radius: 0 var(--radius) 0 var(--radius);
+      transition: all 0.2s ease;
+    }
+    
+    /* 回到顶部按钮样式 */
+    .sidebar-toggle {
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .sidebar-toggle:hover {
+      background-color: var(--theme-secondary);
+      color: white;
+    }
+    
     /* 增强移动端体验 */
     @media screen and (max-width: 768px) {
       .markdown-section {
         padding: 1.5rem 20px;
+        min-height: 100vh;
       }
+      
       .markdown-section h1 {
         font-size: 2rem;
       }
+      
       .markdown-section h2 {
+        font-size: 1.75rem;
+      }
+      
+      .markdown-section h3 {
         font-size: 1.5rem;
       }
-      .markdown-section h3 {
-        font-size: 1.25rem;
+      
+      .sidebar {
+        padding: 1rem 0;
+      }
+      
+      .sidebar-nav {
+        padding: 0 0.75rem;
+      }
+      
+      .app-name-link img {
+        max-width: 60%;
+      }
+    }
+    
+    /* 深色模式支持 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sidebar-bg: #1f2937;
+        --content-bg: #111827;
+        --text-primary: #f9fafb;
+        --text-secondary: #e5e7eb;
+        --text-tertiary: #9ca3af;
+        --sidebar-border: #374151;
+        --hover-bg: #374151;
+        --theme-color: #f9fafb;
+      }
+      
+      .markdown-section a::after {
+        background-color: var(--theme-accent);
+      }
+    }
+    
+    /* 动画效果 */
+    .sidebar-nav li {
+      animation: fadeIn 0.5s ease-out;
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+    
+    .sidebar-nav li.fade-in {
+      opacity: 1;
+    }
+    
+    .sidebar-nav li:hover {
+      transform: translateX(5px);
+      background-color: var(--hover-bg);
+    }
+    
+    .markdown-section {
+      animation: slideIn 0.5s ease-out;
+    }
+    
+    /* 页面加载动画 */
+    body {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    body.loaded {
+      opacity: 1;
+    }
+    
+    /* 搜索框焦点效果 */
+    .search {
+      transition: all 0.3s ease;
+    }
+    
+    .search.focused {
+      box-shadow: 0 0 0 2px var(--theme-color);
+    }
+    
+    /* 回到顶部按钮样式 */
+    .sidebar-nav .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--theme-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      display: none;
+    }
+    
+    .sidebar-nav .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
   </style>
@@ -196,10 +586,60 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-c.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
   <!-- 图片缩放插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-zoom-image/dist/docsify-zoom-image.min.js"></script>
-  <!-- 回到顶部插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-  <!-- 平滑滚动插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/smooth-scroll.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-zoom-image/dist/docsify-zoom-image.min.js"></script>
+    <!-- 回到顶部插件 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+    <!-- 平滑滚动插件 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/smooth-scroll.min.js"></script>
+    <!-- 页面进度插件 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-progress/dist/docsify-progress.min.js"></script>
+    <!-- 代码行号插件 -->
+    <script src="//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css">
+    <!-- 代码高亮关键词插件 -->
+    <script src="//cdn.jsdelivr.net/npm/prismjs/plugins/highlight-keywords/prism-highlight-keywords.min.js"></script>
+    <!-- 字数统计插件 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-count/dist/countable.min.js"></script>
+    <!-- 代码复制插件 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+    <!-- 自定义增强脚本 -->
+    <script>
+      // 页面加载完成后的动画效果
+      window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        // 为导航项添加动画
+        const navItems = document.querySelectorAll('.sidebar-nav li');
+        navItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('fade-in');
+          }, index * 50);
+        });
+      });
+      
+      // 监听滚动事件，显示/隐藏回到顶部按钮
+      window.addEventListener('scroll', function() {
+        const scrollTopButton = document.querySelector('.sidebar-nav .back-to-top');
+        if (scrollTopButton) {
+          if (window.pageYOffset > 300) {
+            scrollTopButton.style.display = 'block';
+          } else {
+            scrollTopButton.style.display = 'none';
+          }
+        }
+      });
+      
+      // 搜索增强
+      window.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.querySelector('.search input');
+        if (searchInput) {
+          searchInput.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+          });
+          searchInput.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
+          });
+        }
+      });
+    </script>
 </body>
 </html>

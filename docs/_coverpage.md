@@ -1,15 +1,16 @@
-![logo](https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css)
-# 红队资料库 <small>1.0</small>
+![logo](../logo.jpg)
 
-> 网络安全攻防技术知识库
+# 安全工具知识库
+> 安全工具和资源的全面汇总
 
-- 全面的安全工具和技术资源
-- 实用的渗透测试和安全防护指南
-- 开源协作，持续更新
+- 渗透测试 | 漏洞分析 | 安全研究
+- 网络安全 | 应用安全 | 系统安全
+- 攻防技术 | 应急响应 | 安全运维
+- 持续更新 | 开源共享 | 社区驱动
 
-[GitHub](https://github.com/adminlove520/RedTeamWiki)
-[开始阅读](#红队资料库)
+[GitHub](https://github.com/adminlove520/RedTeamWiki) 
+[开始阅读](#安全工具知识库)
 
 <!-- 背景图片 -->
 
-<!--![color](#f0f0f0)-->
+![color](#f0f0f0)
