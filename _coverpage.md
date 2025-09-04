@@ -1,4 +1,4 @@
-![logo](/logo.png)
+![logo](/logo.jpg)
 
 # 安全工具知识库
 > 安全工具和资源的全面汇总
@@ -6,6 +6,11 @@
 - 渗透测试 | 漏洞分析 | 安全研究
 - 网络安全 | 应用安全 | 系统安全
 - 攻防技术 | 应急响应 | 安全运维
+- 持续更新 | 开源共享 | 社区驱动
 
-[GitHub](https://github.com/) 
+[GitHub](https://github.com/adminlove520/RedTeamWiki) 
 [开始阅读](#安全工具知识库)
+
+<!-- 背景图片 -->
+
+![color](#f0f0f0)

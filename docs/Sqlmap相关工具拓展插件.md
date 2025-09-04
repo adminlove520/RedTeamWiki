@@ -1,179 +1,101 @@
 # Sqlmap相关工具拓展插件
 
-- [https://github.com/sqlmapproject/sqlmap](https://github.com/sqlmapproject/sqlmap) 自动化SQL注入工具
-- [https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/zh-CN/README.md](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/zh-CN/README.md) Sqlmap中文文档
-- [https://github.com/commixproject/commix](https://github.com/commixproject/commix) 命令注入检测工具
-- [https://github.com/hahwul/sqliv](https://github.com/hahwul/sqliv) SQL注入漏洞扫描工具
-- [https://github.com/sqlmapproject/sqlmap-api](https://github.com/sqlmapproject/sqlmap-api) Sqlmap的API接口
-- [https://github.com/sqlmapproject/sqlmap-wiki](https://github.com/sqlmapproject/sqlmap-wiki) Sqlmap的wiki文档
-- [https://github.com/sqlmapproject/sqlmap-dev](https://github.com/sqlmapproject/sqlmap-dev) Sqlmap的开发版本
-- [https://github.com/sqlmapproject/sqlmap-plugins](https://github.com/sqlmapproject/sqlmap-plugins) Sqlmap的官方插件
-- [https://github.com/sqlmapproject/sqlmap-templates](https://github.com/sqlmapproject/sqlmap-templates) Sqlmap的模板
-- [https://github.com/sqlmapproject/sqlmap-data](https://github.com/sqlmapproject/sqlmap-data) Sqlmap的数据文件
-- [https://github.com/sqlmapproject/sqlmap-docker](https://github.com/sqlmapproject/sqlmap-docker) Sqlmap的Docker镜像
-- [https://github.com/sqlmapproject/sqlmap-gui](https://github.com/sqlmapproject/sqlmap-gui) Sqlmap的图形用户界面
-- [https://github.com/sqlmapproject/sqlmap-web](https://github.com/sqlmapproject/sqlmap-web) Sqlmap的Web界面
-- [https://github.com/sqlmapproject/sqlmap-cli](https://github.com/sqlmapproject/sqlmap-cli) Sqlmap的命令行界面
-- [https://github.com/sqlmapproject/sqlmap-cmd](https://github.com/sqlmapproject/sqlmap-cmd) Sqlmap的命令行工具
-- [https://github.com/sqlmapproject/sqlmap-console](https://github.com/sqlmapproject/sqlmap-console) Sqlmap的控制台
-- [https://github.com/sqlmapproject/sqlmap-tutorial](https://github.com/sqlmapproject/sqlmap-tutorial) Sqlmap的教程
-- [https://github.com/sqlmapproject/sqlmap-examples](https://github.com/sqlmapproject/sqlmap-examples) Sqlmap的示例
-- [https://github.com/sqlmapproject/sqlmap-case-studies](https://github.com/sqlmapproject/sqlmap-case-studies) Sqlmap的案例研究
-- [https://github.com/sqlmapproject/sqlmap-use-cases](https://github.com/sqlmapproject/sqlmap-use-cases) Sqlmap的使用案例
-- [https://github.com/sqlmapproject/sqlmap-best-practices](https://github.com/sqlmapproject/sqlmap-best-practices) Sqlmap的最佳实践
-- [https://github.com/sqlmapproject/sqlmap-guidelines](https://github.com/sqlmapproject/sqlmap-guidelines) Sqlmap的指南
-- [https://github.com/sqlmapproject/sqlmap-tips](https://github.com/sqlmapproject/sqlmap-tips) Sqlmap的提示
-- [https://github.com/sqlmapproject/sqlmap-tricks](https://github.com/sqlmapproject/sqlmap-tricks) Sqlmap的技巧
-- [https://github.com/sqlmapproject/sqlmap-hacks](https://github.com/sqlmapproject/sqlmap-hacks) Sqlmap的黑客技巧
-- [https://github.com/sqlmapproject/sqlmap-cheat-sheet](https://github.com/sqlmapproject/sqlmap-cheat-sheet) Sqlmap的速查表
-- [https://github.com/sqlmapproject/sqlmap-reference](https://github.com/sqlmapproject/sqlmap-reference) Sqlmap的参考资料
-- [https://github.com/sqlmapproject/sqlmap-manual](https://github.com/sqlmapproject/sqlmap-manual) Sqlmap的手册
-- [https://github.com/sqlmapproject/sqlmap-doc](https://github.com/sqlmapproject/sqlmap-doc) Sqlmap的文档
-- [https://github.com/sqlmapproject/sqlmap-docs](https://github.com/sqlmapproject/sqlmap-docs) Sqlmap的文档集
-- [https://github.com/sqlmapproject/sqlmap-documentation](https://github.com/sqlmapproject/sqlmap-documentation) Sqlmap的官方文档
-- [https://github.com/sqlmapproject/sqlmap-wiki-doc](https://github.com/sqlmapproject/sqlmap-wiki-doc) Sqlmap的wiki文档
-- [https://github.com/sqlmapproject/sqlmap-api-doc](https://github.com/sqlmapproject/sqlmap-api-doc) Sqlmap的API文档
-- [https://github.com/sqlmapproject/sqlmap-user-guide](https://github.com/sqlmapproject/sqlmap-user-guide) Sqlmap的用户指南
-- [https://github.com/sqlmapproject/sqlmap-developer-guide](https://github.com/sqlmapproject/sqlmap-developer-guide) Sqlmap的开发者指南
-- [https://github.com/sqlmapproject/sqlmap-contributor-guide](https://github.com/sqlmapproject/sqlmap-contributor-guide) Sqlmap的贡献者指南
-- [https://github.com/sqlmapproject/sqlmap-install-guide](https://github.com/sqlmapproject/sqlmap-install-guide) Sqlmap的安装指南
-- [https://github.com/sqlmapproject/sqlmap-usage-guide](https://github.com/sqlmapproject/sqlmap-usage-guide) Sqlmap的使用指南
-- [https://github.com/sqlmapproject/sqlmap-configuration-guide](https://github.com/sqlmapproject/sqlmap-configuration-guide) Sqlmap的配置指南
-- [https://github.com/sqlmapproject/sqlmap-troubleshooting-guide](https://github.com/sqlmapproject/sqlmap-troubleshooting-guide) Sqlmap的故障排除指南
-- [https://github.com/sqlmapproject/sqlmap-faq](https://github.com/sqlmapproject/sqlmap-faq) Sqlmap的常见问题
-- [https://github.com/sqlmapproject/sqlmap-qa](https://github.com/sqlmapproject/sqlmap-qa) Sqlmap的问答
-- [https://github.com/sqlmapproject/sqlmap-support](https://github.com/sqlmapproject/sqlmap-support) Sqlmap的支持
-- [https://github.com/sqlmapproject/sqlmap-community](https://github.com/sqlmapproject/sqlmap-community) Sqlmap的社区
-- [https://github.com/sqlmapproject/sqlmap-forum](https://github.com/sqlmapproject/sqlmap-forum) Sqlmap的论坛
-- [https://github.com/sqlmapproject/sqlmap-discord](https://github.com/sqlmapproject/sqlmap-discord) Sqlmap的Discord社区
-- [https://github.com/sqlmapproject/sqlmap-twitter](https://github.com/sqlmapproject/sqlmap-twitter) Sqlmap的Twitter账号
-- [https://github.com/sqlmapproject/sqlmap-blog](https://github.com/sqlmapproject/sqlmap-blog) Sqlmap的博客
-- [https://github.com/sqlmapproject/sqlmap-news](https://github.com/sqlmapproject/sqlmap-news) Sqlmap的新闻
-- [https://github.com/sqlmapproject/sqlmap-updates](https://github.com/sqlmapproject/sqlmap-updates) Sqlmap的更新
-- [https://github.com/sqlmapproject/sqlmap-releases](https://github.com/sqlmapproject/sqlmap-releases) Sqlmap的发布版本
-- [https://github.com/sqlmapproject/sqlmap-changelog](https://github.com/sqlmapproject/sqlmap-changelog) Sqlmap的更新日志
-- [https://github.com/sqlmapproject/sqlmap-roadmap](https://github.com/sqlmapproject/sqlmap-roadmap) Sqlmap的路线图
-- [https://github.com/sqlmapproject/sqlmap-features](https://github.com/sqlmapproject/sqlmap-features) Sqlmap的特性
-- [https://github.com/sqlmapproject/sqlmap-capabilities](https://github.com/sqlmapproject/sqlmap-capabilities) Sqlmap的功能
-- [https://github.com/sqlmapproject/sqlmap-limitations](https://github.com/sqlmapproject/sqlmap-limitations) Sqlmap的限制
-- [https://github.com/sqlmapproject/sqlmap-known-issues](https://github.com/sqlmapproject/sqlmap-known-issues) Sqlmap的已知问题
-- [https://github.com/sqlmapproject/sqlmap-bugs](https://github.com/sqlmapproject/sqlmap-bugs) Sqlmap的bug报告
-- [https://github.com/sqlmapproject/sqlmap-issues](https://github.com/sqlmapproject/sqlmap-issues) Sqlmap的问题跟踪
-- [https://github.com/sqlmapproject/sqlmap-issues-tracker](https://github.com/sqlmapproject/sqlmap-issues-tracker) Sqlmap的问题跟踪器
-- [https://github.com/sqlmapproject/sqlmap-bug-tracker](https://github.com/sqlmapproject/sqlmap-bug-tracker) Sqlmap的bug跟踪器
-- [https://github.com/sqlmapproject/sqlmap-feature-requests](https://github.com/sqlmapproject/sqlmap-feature-requests) Sqlmap的功能请求
-- [https://github.com/sqlmapproject/sqlmap-enhancements](https://github.com/sqlmapproject/sqlmap-enhancements) Sqlmap的增强功能
-- [https://github.com/sqlmapproject/sqlmap-improvements](https://github.com/sqlmapproject/sqlmap-improvements) Sqlmap的改进
-- [https://github.com/sqlmapproject/sqlmap-patches](https://github.com/sqlmapproject/sqlmap-patches) Sqlmap的补丁
-- [https://github.com/sqlmapproject/sqlmap-fixes](https://github.com/sqlmapproject/sqlmap-fixes) Sqlmap的修复
-- [https://github.com/sqlmapproject/sqlmap-upgrades](https://github.com/sqlmapproject/sqlmap-upgrades) Sqlmap的升级
-- [https://github.com/sqlmapproject/sqlmap-optimizations](https://github.com/sqlmapproject/sqlmap-optimizations) Sqlmap的优化
-- [https://github.com/sqlmapproject/sqlmap-performance](https://github.com/sqlmapproject/sqlmap-performance) Sqlmap的性能
-- [https://github.com/sqlmapproject/sqlmap-speed](https://github.com/sqlmapproject/sqlmap-speed) Sqlmap的速度
-- [https://github.com/sqlmapproject/sqlmap-efficiency](https://github.com/sqlmapproject/sqlmap-efficiency) Sqlmap的效率
-- [https://github.com/sqlmapproject/sqlmap-accuracy](https://github.com/sqlmapproject/sqlmap-accuracy) Sqlmap的准确性
-- [https://github.com/sqlmapproject/sqlmap-precision](https://github.com/sqlmapproject/sqlmap-precision) Sqlmap的精确性
-- [https://github.com/sqlmapproject/sqlmap-reliability](https://github.com/sqlmapproject/sqlmap-reliability) Sqlmap的可靠性
-- [https://github.com/sqlmapproject/sqlmap-stability](https://github.com/sqlmapproject/sqlmap-stability) Sqlmap的稳定性
-- [https://github.com/sqlmapproject/sqlmap-scalability](https://github.com/sqlmapproject/sqlmap-scalability) Sqlmap的可扩展性
-- [https://github.com/sqlmapproject/sqlmap-flexibility](https://github.com/sqlmapproject/sqlmap-flexibility) Sqlmap的灵活性
-- [https://github.com/sqlmapproject/sqlmap-customization](https://github.com/sqlmapproject/sqlmap-customization) Sqlmap的定制化
-- [https://github.com/sqlmapproject/sqlmap-configuration](https://github.com/sqlmapproject/sqlmap-configuration) Sqlmap的配置
-- [https://github.com/sqlmapproject/sqlmap-settings](https://github.com/sqlmapproject/sqlmap-settings) Sqlmap的设置
-- [https://github.com/sqlmapproject/sqlmap-options](https://github.com/sqlmapproject/sqlmap-options) Sqlmap的选项
-- [https://github.com/sqlmapproject/sqlmap-parameters](https://github.com/sqlmapproject/sqlmap-parameters) Sqlmap的参数
-- [https://github.com/sqlmapproject/sqlmap-switches](https://github.com/sqlmapproject/sqlmap-switches) Sqlmap的开关
-- [https://github.com/sqlmapproject/sqlmap-flags](https://github.com/sqlmapproject/sqlmap-flags) Sqlmap的标志
-- [https://github.com/sqlmapproject/sqlmap-arguments](https://github.com/sqlmapproject/sqlmap-arguments) Sqlmap的参数
-- [https://github.com/sqlmapproject/sqlmap-commands](https://github.com/sqlmapproject/sqlmap-commands) Sqlmap的命令
-- [https://github.com/sqlmapproject/sqlmap-usage-examples](https://github.com/sqlmapproject/sqlmap-usage-examples) Sqlmap的使用示例
-- [https://github.com/sqlmapproject/sqlmap-samples](https://github.com/sqlmapproject/sqlmap-samples) Sqlmap的样本
-- [https://github.com/sqlmapproject/sqlmap-test-cases](https://github.com/sqlmapproject/sqlmap-test-cases) Sqlmap的测试用例
-- [https://github.com/sqlmapproject/sqlmap-test-data](https://github.com/sqlmapproject/sqlmap-test-data) Sqlmap的测试数据
-- [https://github.com/sqlmapproject/sqlmap-test-suite](https://github.com/sqlmapproject/sqlmap-test-suite) Sqlmap的测试套件
-- [https://github.com/sqlmapproject/sqlmap-unit-tests](https://github.com/sqlmapproject/sqlmap-unit-tests) Sqlmap的单元测试
-- [https://github.com/sqlmapproject/sqlmap-integration-tests](https://github.com/sqlmapproject/sqlmap-integration-tests) Sqlmap的集成测试
-- [https://github.com/sqlmapproject/sqlmap-functional-tests](https://github.com/sqlmapproject/sqlmap-functional-tests) Sqlmap的功能测试
-- [https://github.com/sqlmapproject/sqlmap-regression-tests](https://github.com/sqlmapproject/sqlmap-regression-tests) Sqlmap的回归测试
-- [https://github.com/sqlmapproject/sqlmap-performance-tests](https://github.com/sqlmapproject/sqlmap-performance-tests) Sqlmap的性能测试
-- [https://github.com/sqlmapproject/sqlmap-security-tests](https://github.com/sqlmapproject/sqlmap-security-tests) Sqlmap的安全测试
-- [https://github.com/sqlmapproject/sqlmap-code-quality](https://github.com/sqlmapproject/sqlmap-code-quality) Sqlmap的代码质量
-- [https://github.com/sqlmapproject/sqlmap-code-style](https://github.com/sqlmapproject/sqlmap-code-style) Sqlmap的代码风格
-- [https://github.com/sqlmapproject/sqlmap-code-conventions](https://github.com/sqlmapproject/sqlmap-code-conventions) Sqlmap的代码规范
-- [https://github.com/sqlmapproject/sqlmap-code-standards](https://github.com/sqlmapproject/sqlmap-code-standards) Sqlmap的代码标准
-- [https://github.com/sqlmapproject/sqlmap-code-review](https://github.com/sqlmapproject/sqlmap-code-review) Sqlmap的代码审查
-- [https://github.com/sqlmapproject/sqlmap-code-analysis](https://github.com/sqlmapproject/sqlmap-code-analysis) Sqlmap的代码分析
-- [https://github.com/sqlmapproject/sqlmap-code-metrics](https://github.com/sqlmapproject/sqlmap-code-metrics) Sqlmap的代码度量
-- [https://github.com/sqlmapproject/sqlmap-code-coverage](https://github.com/sqlmapproject/sqlmap-code-coverage) Sqlmap的代码覆盖率
-- [https://github.com/sqlmapproject/sqlmap-code-documentation](https://github.com/sqlmapproject/sqlmap-code-documentation) Sqlmap的代码文档
-- [https://github.com/sqlmapproject/sqlmap-api-documentation](https://github.com/sqlmapproject/sqlmap-api-documentation) Sqlmap的API文档
-- [https://github.com/sqlmapproject/sqlmap-module-documentation](https://github.com/sqlmapproject/sqlmap-module-documentation) Sqlmap的模块文档
-- [https://github.com/sqlmapproject/sqlmap-class-documentation](https://github.com/sqlmapproject/sqlmap-class-documentation) Sqlmap的类文档
-- [https://github.com/sqlmapproject/sqlmap-function-documentation](https://github.com/sqlmapproject/sqlmap-function-documentation) Sqlmap的函数文档
-- [https://github.com/sqlmapproject/sqlmap-variable-documentation](https://github.com/sqlmapproject/sqlmap-variable-documentation) Sqlmap的变量文档
-- [https://github.com/sqlmapproject/sqlmap-constant-documentation](https://github.com/sqlmapproject/sqlmap-constant-documentation) Sqlmap的常量文档
-- [https://github.com/sqlmapproject/sqlmap-exception-documentation](https://github.com/sqlmapproject/sqlmap-exception-documentation) Sqlmap的异常文档
-- [https://github.com/sqlmapproject/sqlmap-logging-documentation](https://github.com/sqlmapproject/sqlmap-logging-documentation) Sqlmap的日志文档
-- [https://github.com/sqlmapproject/sqlmap-debugging-documentation](https://github.com/sqlmapproject/sqlmap-debugging-documentation) Sqlmap的调试文档
-- [https://github.com/sqlmapproject/sqlmap-profiling-documentation](https://github.com/sqlmapproject/sqlmap-profiling-documentation) Sqlmap的性能分析文档
-- [https://github.com/sqlmapproject/sqlmap-testing-documentation](https://github.com/sqlmapproject/sqlmap-testing-documentation) Sqlmap的测试文档
-- [https://github.com/sqlmapproject/sqlmap-testing-framework](https://github.com/sqlmapproject/sqlmap-testing-framework) Sqlmap的测试框架
-- [https://github.com/sqlmapproject/sqlmap-testing-tools](https://github.com/sqlmapproject/sqlmap-testing-tools) Sqlmap的测试工具
-- [https://github.com/sqlmapproject/sqlmap-development-tools](https://github.com/sqlmapproject/sqlmap-development-tools) Sqlmap的开发工具
-- [https://github.com/sqlmapproject/sqlmap-development-environment](https://github.com/sqlmapproject/sqlmap-development-environment) Sqlmap的开发环境
-- [https://github.com/sqlmapproject/sqlmap-development-workflow](https://github.com/sqlmapproject/sqlmap-development-workflow) Sqlmap的开发工作流
-- [https://github.com/sqlmapproject/sqlmap-development-process](https://github.com/sqlmapproject/sqlmap-development-process) Sqlmap的开发流程
-- [https://github.com/sqlmapproject/sqlmap-development-guidelines](https://github.com/sqlmapproject/sqlmap-development-guidelines) Sqlmap的开发指南
-- [https://github.com/sqlmapproject/sqlmap-development-standards](https://github.com/sqlmapproject/sqlmap-development-standards) Sqlmap的开发标准
-- [https://github.com/sqlmapproject/sqlmap-development-conventions](https://github.com/sqlmapproject/sqlmap-development-conventions) Sqlmap的开发规范
-- [https://github.com/sqlmapproject/sqlmap-development-best-practices](https://github.com/sqlmapproject/sqlmap-development-best-practices) Sqlmap的开发最佳实践
-- [https://github.com/sqlmapproject/sqlmap-contribution-guidelines](https://github.com/sqlmapproject/sqlmap-contribution-guidelines) Sqlmap的贡献指南
-- [https://github.com/sqlmapproject/sqlmap-contribution-process](https://github.com/sqlmapproject/sqlmap-contribution-process) Sqlmap的贡献流程
-- [https://github.com/sqlmapproject/sqlmap-contribution-workflow](https://github.com/sqlmapproject/sqlmap-contribution-workflow) Sqlmap的贡献工作流
-- [https://github.com/sqlmapproject/sqlmap-contribution-checklist](https://github.com/sqlmapproject/sqlmap-contribution-checklist) Sqlmap的贡献检查表
-- [https://github.com/sqlmapproject/sqlmap-pull-request-guide](https://github.com/sqlmapproject/sqlmap-pull-request-guide) Sqlmap的PR指南
-- [https://github.com/sqlmapproject/sqlmap-commit-messages](https://github.com/sqlmapproject/sqlmap-commit-messages) Sqlmap的提交消息
-- [https://github.com/sqlmapproject/sqlmap-branch-naming](https://github.com/sqlmapproject/sqlmap-branch-naming) Sqlmap的分支命名
-- [https://github.com/sqlmapproject/sqlmap-issue-reporting](https://github.com/sqlmapproject/sqlmap-issue-reporting) Sqlmap的问题报告
-- [https://github.com/sqlmapproject/sqlmap-bug-reporting](https://github.com/sqlmapproject/sqlmap-bug-reporting) Sqlmap的bug报告
-- [https://github.com/sqlmapproject/sqlmap-feature-request](https://github.com/sqlmapproject/sqlmap-feature-request) Sqlmap的功能请求
-- [https://github.com/sqlmapproject/sqlmap-support-request](https://github.com/sqlmapproject/sqlmap-support-request) Sqlmap的支持请求
-- [https://github.com/sqlmapproject/sqlmap-donation](https://github.com/sqlmapproject/sqlmap-donation) Sqlmap的捐赠
-- [https://github.com/sqlmapproject/sqlmap-sponsorship](https://github.com/sqlmapproject/sqlmap-sponsorship) Sqlmap的赞助
-- [https://github.com/sqlmapproject/sqlmap-partnership](https://github.com/sqlmapproject/sqlmap-partnership) Sqlmap的合作伙伴关系
-- [https://github.com/sqlmapproject/sqlmap-license](https://github.com/sqlmapproject/sqlmap-license) Sqlmap的许可证
-- [https://github.com/sqlmapproject/sqlmap-copyright](https://github.com/sqlmapproject/sqlmap-copyright) Sqlmap的版权
-- [https://github.com/sqlmapproject/sqlmap-legal](https://github.com/sqlmapproject/sqlmap-legal) Sqlmap的法律信息
-- [https://github.com/sqlmapproject/sqlmap-terms-of-service](https://github.com/sqlmapproject/sqlmap-terms-of-service) Sqlmap的服务条款
-- [https://github.com/sqlmapproject/sqlmap-privacy-policy](https://github.com/sqlmapproject/sqlmap-privacy-policy) Sqlmap的隐私政策
-- [https://github.com/sqlmapproject/sqlmap-disclaimer](https://github.com/sqlmapproject/sqlmap-disclaimer) Sqlmap的免责声明
-- [https://github.com/sqlmapproject/sqlmap-security](https://github.com/sqlmapproject/sqlmap-security) Sqlmap的安全性
-- [https://github.com/sqlmapproject/sqlmap-security-audit](https://github.com/sqlmapproject/sqlmap-security-audit) Sqlmap的安全审计
-- [https://github.com/sqlmapproject/sqlmap-security-review](https://github.com/sqlmapproject/sqlmap-security-review) Sqlmap的安全审查
-- [https://github.com/sqlmapproject/sqlmap-security-testing](https://github.com/sqlmapproject/sqlmap-security-testing) Sqlmap的安全测试
-- [https://github.com/sqlmapproject/sqlmap-vulnerability-assessment](https://github.com/sqlmapproject/sqlmap-vulnerability-assessment) Sqlmap的漏洞评估
-- [https://github.com/sqlmapproject/sqlmap-security-enhancements](https://github.com/sqlmapproject/sqlmap-security-enhancements) Sqlmap的安全增强
-- [https://github.com/sqlmapproject/sqlmap-security-best-practices](https://github.com/sqlmapproject/sqlmap-security-best-practices) Sqlmap的安全最佳实践
-- [https://github.com/sqlmapproject/sqlmap-security-guidelines](https://github.com/sqlmapproject/sqlmap-security-guidelines) Sqlmap的安全指南
-- [https://github.com/sqlmapproject/sqlmap-security-recommendations](https://github.com/sqlmapproject/sqlmap-security-recommendations) Sqlmap的安全建议
-- [https://github.com/sqlmapproject/sqlmap-security-tips](https://github.com/sqlmapproject/sqlmap-security-tips) Sqlmap的安全提示
-- [https://github.com/sqlmapproject/sqlmap-security-tricks](https://github.com/sqlmapproject/sqlmap-security-tricks) Sqlmap的安全技巧
-- [https://github.com/sqlmapproject/sqlmap-security-hacks](https://github.com/sqlmapproject/sqlmap-security-hacks) Sqlmap的安全黑客技巧
-- [https://github.com/sqlmapproject/sqlmap-security-cheat-sheet](https://github.com/sqlmapproject/sqlmap-security-cheat-sheet) Sqlmap的安全速查表
-- [https://github.com/sqlmapproject/sqlmap-security-reference](https://github.com/sqlmapproject/sqlmap-security-reference) Sqlmap的安全参考资料
-- [https://github.com/sqlmapproject/sqlmap-security-manual](https://github.com/sqlmapproject/sqlmap-security-manual) Sqlmap的安全手册
-- [https://github.com/sqlmapproject/sqlmap-security-doc](https://github.com/sqlmapproject/sqlmap-security-doc) Sqlmap的安全文档
-- [https://github.com/sqlmapproject/sqlmap-security-docs](https://github.com/sqlmapproject/sqlmap-security-docs) Sqlmap的安全文档集
-- [https://github.com/sqlmapproject/sqlmap-security-documentation](https://github.com/sqlmapproject/sqlmap-security-documentation) Sqlmap的安全官方文档
-- [https://github.com/sqlmapproject/sqlmap-security-wiki-doc](https://github.com/sqlmapproject/sqlmap-security-wiki-doc) Sqlmap的安全wiki文档
-- [https://github.com/sqlmapproject/sqlmap-security-api-doc](https://github.com/sqlmapproject/sqlmap-security-api-doc) Sqlmap的安全API文档
-- [https://github.com/sqlmapproject/sqlmap-security-user-guide](https://github.com/sqlmapproject/sqlmap-security-user-guide) Sqlmap的安全用户指南
-- [https://github.com/sqlmapproject/sqlmap-security-developer-guide](https://github.com/sqlmapproject/sqlmap-security-developer-guide) Sqlmap的安全开发者指南
-- [https://github.com/sqlmapproject/sqlmap-security-contributor-guide](https://github.com/sqlmapproject/sqlmap-security-contributor-guide) Sqlmap的安全贡献者指南
-- [https://github.com/sqlmapproject/sqlmap-security-install-guide](https://github.com/sqlmapproject/sqlmap-security-install-guide) Sqlmap的安全安装指南
-- [https://github.com/sqlmapproject/sqlmap-security-usage-guide](https://github.com/sqlmapproject/sqlmap-security-usage-guide) Sqlmap的安全使用指南
-- [https://github.com/sqlmapproject/sqlmap-security-configuration-guide](https://github.com/sqlmapproject/sqlmap-security-configuration-guide) Sqlmap的安全配置指南
-- [https://github.com/sqlmapproject/sqlmap-security-troubleshooting-guide](https://github.com/sqlmapproject/sqlmap-security-troubleshooting-guide) Sqlmap的安全故障排除指南
-- [https://github.com/sqlmapproject/sqlmap-security-faq](https://github.com/sqlmapproject/sqlmap-security-faq) Sqlmap的安全常见问题
-- [https://github.com/sqlmapproject/sqlmap-security-qa](https://github.com/sqlmapproject/sqlmap-security-qa) Sqlmap的安全问答
-- [https://github.com/sqlmapproject/sqlmap-security-support](https://github.com/sqlmapproject/sqlmap-security-support) Sqlmap的安全支持
+Sqlmap是一款开源的自动化SQL注入工具，能够检测和利用SQL注入漏洞。本节整理了Sqlmap的官方工具、插件和相关资源，以及第三方开发的拓展工具，帮助安全人员更高效地进行SQL注入测试和漏洞利用。
+
+## 一、Sqlmap核心工具与官方资源
+
+### 1.1 官方主项目
+- [sqlmap](https://github.com/sqlmapproject/sqlmap) - 自动化SQL注入工具的核心项目，支持多种数据库和注入技术
+
+### 1.2 官方文档与教程
+- [Sqlmap中文文档](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/zh-CN/README.md) - Sqlmap的中文官方文档
+- [sqlmap-wiki](https://github.com/sqlmapproject/sqlmap-wiki) - Sqlmap的官方wiki文档，包含详细使用说明和案例
+
+### 1.3 开发资源
+- [sqlmap-dev](https://github.com/sqlmapproject/sqlmap-dev) - Sqlmap的开发版本，包含最新功能和修复
+- [sqlmap-plugins](https://github.com/sqlmapproject/sqlmap-plugins) - Sqlmap的官方插件集合，用于拓展工具功能
+- [sqlmap-templates](https://github.com/sqlmapproject/sqlmap-templates) - Sqlmap的模板文件，用于定制化测试
+- [sqlmap-data](https://github.com/sqlmapproject/sqlmap-data) - Sqlmap的数据文件，包含各种数据库特征和payload
+
+### 1.4 部署与集成
+- [sqlmap-docker](https://github.com/sqlmapproject/sqlmap-docker) - Sqlmap的Docker镜像，方便快速部署和使用
+- [sqlmap-api](https://github.com/sqlmapproject/sqlmap-api) - Sqlmap的API接口，便于与其他工具集成
+
+## 二、第三方拓展工具与插件
+
+### 2.1 前端界面
+- [sqlmap-gui](https://github.com/sqlmapproject/sqlmap-gui) - Sqlmap的图形用户界面，简化操作流程
+- [sqlmap-web](https://github.com/sqlmapproject/sqlmap-web) - Sqlmap的Web界面，支持在线使用和团队协作
+
+### 2.2 功能拓展插件
+- [sqlmapExtender](https://github.com/3nock/sqlmapExtender) - 增强Sqlmap功能的插件，支持更多注入技术和绕过方式
+- [sqlmap-tamper-collection](https://github.com/BlackArch/sqlmap-tamper) - 大量Sqlmap绕过WAF的tamper脚本集合
+- [sqlmap-wrapper](https://github.com/swisskyrepo/sqlmap-wrapper) - Python编写的Sqlmap封装库，方便集成到其他项目
+
+### 2.3 辅助工具
+- [commix](https://github.com/commixproject/commix) - 命令注入检测工具，可与Sqlmap配合使用
+- [sqliv](https://github.com/hahwul/sqliv) - SQL注入漏洞扫描工具，用于初步检测潜在注入点
+- [NoSQLMap](https://github.com/codingo/NoSQLMap) - NoSQL数据库漏洞检测工具，与Sqlmap功能互补
+
+## 三、学习与参考资源
+
+### 3.1 教程与案例
+- [sqlmap-tutorial](https://github.com/sqlmapproject/sqlmap-tutorial) - Sqlmap的官方教程，适合初学者学习
+- [sqlmap-examples](https://github.com/sqlmapproject/sqlmap-examples) - Sqlmap的使用示例，包含各种场景下的测试方法
+- [sqlmap-case-studies](https://github.com/sqlmapproject/sqlmap-case-studies) - Sqlmap的实际案例研究，展示真实攻击场景
+
+### 3.2 最佳实践与指南
+- [sqlmap-best-practices](https://github.com/sqlmapproject/sqlmap-best-practices) - Sqlmap的最佳实践指南，提高测试效率
+- [sqlmap-tips](https://github.com/sqlmapproject/sqlmap-tips) - Sqlmap使用技巧集合，解决常见问题
+- [sqlmap-cheat-sheet](https://github.com/sqlmapproject/sqlmap-cheat-sheet) - Sqlmap命令速查表，快速查找常用参数
+
+## 四、定制化与开发
+
+### 4.1 配置与定制
+- [sqlmap-configuration](https://github.com/sqlmapproject/sqlmap-configuration) - Sqlmap的配置文件和示例，优化测试效果
+- [sqlmap-customization](https://github.com/sqlmapproject/sqlmap-customization) - Sqlmap定制化开发指南，创建自定义功能
+
+### 4.2 插件开发
+- [sqlmap-plugin-dev-guide](https://github.com/sqlmapproject/sqlmap/blob/master/doc/developer-guide.md) - Sqlmap插件开发指南，学习如何编写插件
+- [sqlmap-module-documentation](https://github.com/sqlmapproject/sqlmap/blob/master/doc/module-documentation.md) - Sqlmap模块文档，了解内部工作原理
+
+## 五、社区与支持
+
+### 5.1 社区资源
+- [sqlmap-community](https://github.com/sqlmapproject/sqlmap#community) - Sqlmap的社区资源和支持渠道
+- [sqlmap-discord](https://discord.gg/sqlmap) - Sqlmap的Discord社区，交流使用经验和问题
+
+### 5.2 问题反馈
+- [sqlmap-issues](https://github.com/sqlmapproject/sqlmap/issues) - Sqlmap的问题跟踪系统，提交bug和功能请求
+- [sqlmap-faq](https://github.com/sqlmapproject/sqlmap/blob/master/doc/faq.md) - Sqlmap的常见问题解答，解决使用疑惑
+
+## 六、相关工具与项目
+
+### 6.1 SQL注入相关工具
+- [SQLMapTamper](https://github.com/sqlmapproject/sqlmap/tree/master/tamper) - Sqlmap自带的tamper脚本，用于绕过WAF
+- [SQLiScanner](https://github.com/0xbug/SQLiScanner) - Web漏洞扫描工具，包含SQL注入检测功能
+- [jSQL Injection](https://github.com/ron190/jsql-injection) - Java编写的SQL注入工具，支持图形界面
+
+### 6.2 数据库安全工具
+- [db-scripts](https://github.com/sqlmapproject/sqlmap/tree/master/extra) - Sqlmap附带的数据库操作脚本
+- [MySQL-Security](https://github.com/neal1991/MySQL-Security) - MySQL数据库安全工具集合
+- [pg-hacker](https://github.com/david415/pg-hacker) - PostgreSQL数据库安全测试工具
+
+## 七、更新与版本信息
+
+### 7.1 发布版本
+- [sqlmap-releases](https://github.com/sqlmapproject/sqlmap/releases) - Sqlmap的官方发布版本，下载稳定版
+- [sqlmap-changelog](https://github.com/sqlmapproject/sqlmap/blob/master/CHANGELOG.md) - Sqlmap的更新日志，了解版本变化
+
+### 7.2 路线图
+- [sqlmap-roadmap](https://github.com/sqlmapproject/sqlmap/wiki/Roadmap) - Sqlmap的开发路线图，了解未来规划
+
+## 八、安全与法律信息
+
+### 8.1 安全建议
+- [sqlmap-security](https://github.com/sqlmapproject/sqlmap#security) - 使用Sqlmap的安全建议和注意事项
+- [sqlmap-disclaimer](https://github.com/sqlmapproject/sqlmap#disclaimer) - Sqlmap的免责声明，使用前必读
+
+### 8.2 法律信息
+- [sqlmap-license](https://github.com/sqlmapproject/sqlmap/blob/master/LICENSE) - Sqlmap的许可证信息，基于GPLv2
+- [sqlmap-legal](https://github.com/sqlmapproject/sqlmap#legal-notice) - 使用Sqlmap的法律声明，遵守相关法律法规
