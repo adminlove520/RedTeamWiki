@@ -1,0 +1,46 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 监听main分支的推送
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # 检出所有历史记录
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      
+      - name: Install dependencies
+        run: |
+          # docsify是一个纯前端框架，不需要安装依赖，只需要确保文件结构正确
+          echo "No dependencies to install for docsify"
+      
+      - name: Build
+        run: |
+          # docsify是一个运行时框架，不需要构建步骤
+          echo "No build step required for docsify"
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          force_orphan: true  # 创建一个没有历史记录的新分支
+          publish_branch: gh-pages  # 部署到gh-pages分支

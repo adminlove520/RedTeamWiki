@@ -2,20 +2,29 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>安全工具知识库 | SafePro Resources</title>
+  <title>安全工具知识库</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="安全工具和资源知识库 - 汇总各类网络安全工具、渗透测试资源、漏洞分析等内容">
+  <meta name="description" content="全面的网络安全工具、资源和学习资料知识库">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <!-- 代码高亮主题 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css">
+  <!-- 分页样式 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.css">
   <style>
     :root {
       --theme-color: #42b983;
+      --sidebar-nav-link-before-content: '';
     }
     .sidebar {
-      padding: 1rem 0;
+      padding: 1.5rem 0;
     }
     .sidebar-nav {
-      line-height: 1.8em;
+      line-height: 2;
+    }
+    .sidebar-nav > ul > li > a {
+      font-weight: 600;
+      font-size: 16px;
     }
     .sidebar ul li.active > a {
       color: var(--theme-color);
@@ -23,25 +32,73 @@
     }
     .markdown-section {
       max-width: 900px;
+      padding: 2rem 45px;
     }
     .markdown-section code {
       color: #e96900;
     }
+    .markdown-section pre > code {
+      color: #eee;
+      font-size: 14px;
+      padding: 1.5em;
+      border-radius: 5px;
+    }
     .markdown-section h1 {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
+      font-weight: 700;
     }
     .markdown-section h2 {
+      font-size: 2rem;
+      margin-top: 2.5rem;
+      font-weight: 600;
+      border-bottom: 1px solid #eaecef;
+      padding-bottom: 0.3rem;
+    }
+    .markdown-section h3 {
+      font-size: 1.5rem;
       margin-top: 2rem;
-      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .markdown-section blockquote {
+      border-left: 4px solid var(--theme-color);
+      color: #6a737d;
     }
     .markdown-section a {
       font-weight: 500;
     }
+    .markdown-section img {
+      border-radius: 5px;
+      margin: 1rem 0;
+    }
+    /* 回到顶部按钮样式 */
     .app-name-link img {
       max-width: 80%;
     }
-    .cover-main img {
-      max-width: 60%;
+    .search {
+      padding: 6px 0;
+      margin-bottom: 15px;
+    }
+    .search input {
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+    }
+    /* 增强移动端体验 */
+    @media screen and (max-width: 768px) {
+      .markdown-section {
+        padding: 1.5rem 20px;
+      }
+      .markdown-section h1 {
+        font-size: 2rem;
+      }
+      .markdown-section h2 {
+        font-size: 1.5rem;
+      }
+      .markdown-section h3 {
+        font-size: 1.25rem;
+      }
     }
   </style>
 </head>
@@ -53,46 +110,95 @@
       repo: '',
       loadSidebar: true,
       subMaxLevel: 3,
-      auto2top: true,
       coverpage: true,
+      auto2top: true,
+      homepage: 'README.md',
+      basePath: '',
       search: {
         maxAge: 86400000,
         paths: 'auto',
         placeholder: '搜索',
-        noData: '未找到结果',
+        noData: '没有找到结果',
         depth: 6,
         hideOtherSidebarContent: false,
-        namespace: 'safePro-resources'
+        // 搜索结果的标题最大长度
+        titlesLength: 60,
+        // 搜索结果的正文最大长度
+        snippetLength: 100,
+        // 搜索延迟
+        debounceTime: 300
       },
       pagination: {
-        previousText: '上一章',
-        nextText: '下一章',
+        previousText: '上一章节',
+        nextText: '下一章节',
+        crossChapter: true,
+        crossChapterText: true
       },
       copyCode: {
         buttonText : '复制',
         errorText  : '错误',
         successText: '已复制'
       },
+      // 代码复制功能增强
       plugins: [
-        function(hook, vm) {
-          hook.beforeEach(function(html) {
-            return html + '
-----
-最后更新: ' + new Date().toLocaleDateString('zh-CN');
+        function(hook) {
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            '<span>安全工具知识库 &copy; 2024</span>',
+            '</footer>'
+          ].join('');
+
+          hook.afterEach(function(html) {
+            return html + footer;
           });
         }
-      ]
+      ],
+      // 自动滚动到锚点
+      auto2top: true,
+      // 主题颜色
+      themeColor: '#42b983',
+      // 启动平滑滚动
+      smoothScroll: true,
+      // 支持图片缩放
+      zoomImage: {
+        // 启用图片缩放功能
+        enable: true,
+        // 背景色
+        bgColor: 'rgba(0,0,0,0.85)',
+        // 关闭按钮颜色
+        closeColor: '#fff',
+        // 缩放比例
+        scaleStep: 0.1
+      }
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- 搜索插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- 代码复制插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- 分页插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- 代码高亮支持 -->
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-php.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-go.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-yaml.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-sql.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-xml.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-c.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+  <!-- 图片缩放插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-zoom-image/dist/docsify-zoom-image.min.js"></script>
+  <!-- 回到顶部插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  <!-- 平滑滚动插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/smooth-scroll.min.js"></script>
 </body>
 </html>
